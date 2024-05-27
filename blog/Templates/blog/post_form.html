@@ -1,0 +1,17 @@
+{% extends "blog/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="content-section">
+        <form action="." method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{form.as_p}}
+            <button type="submit" class="btn btn-lg btn-success">Upload</button>
+        </form>
+        {% if obj %}
+        <h3> Successfully uploaded : {{img_obj.caption}}</h3>
+        <img src="{{ obj.image.url}}" alt="image" class="img-thumbnail" >
+        {% endif %}
+        <hr>
+    </div>
+
+{% endblock content %}
